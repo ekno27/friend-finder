@@ -11,7 +11,18 @@
 
   <!-- Font Awesome Glyphicons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-   
+   <style>
+   .modal-body{
+    text-align: center;
+    height: auto;
+  }
+  
+  @media (min-width: 768px){
+  .modal-dialog {
+    width: auto;      
+    max-width: 90%;
+
+   </style>
 </head>
 
 <body>
@@ -31,7 +42,7 @@
     <hr>
 
     <h3>Question 1</h3>
-    <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+    <h4>Your mind drifts off whenever you hear Clark talk about express.</h4>
     <select class="form-control" id="q1">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -42,7 +53,7 @@
     </select>
 
     <h3>Question 2</h3>
-    <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
+    <h4>Generally speaking, You'd rather swim with a camel than climb with a whale.</h4>
     <select class="form-control" id="q2">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -54,7 +65,7 @@
 
 
     <h3>Question 3</h3>
-    <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
+    <h4>You have a deep connection with the letter h.</h4>
     <select class="form-control" id="q3">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -78,7 +89,7 @@
 
 
     <h3>Question 5</h3>
-    <h4>People can rarely upset you.</h4>
+    <h4>People?</h4>
     <select class="form-control" id="q5">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -90,7 +101,7 @@
 
 
     <h3>Question 6</h3>
-    <h4>It is often difficult for you to relate to other people’s feelings.</h4>
+    <h4>I let it happen</h4>
     <select class="form-control" id="q6">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -102,7 +113,7 @@
 
 
     <h3>Question 7</h3>
-    <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
+    <h4>Feelings, flashcards, fake knives, ketchup.</h4>
     <select class="form-control" id="q7">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -113,7 +124,7 @@
     </select>
 
     <h3>Question 8</h3>
-    <h4>You rarely get carried away by fantasies and ideas.</h4>
+    <h4>Making up coherent questions comes naturally.</h4>
     <select class="form-control" id="q8">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -124,7 +135,7 @@
     </select>
 
     <h3>Question 9</h3>
-    <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+    <h4>Despacito was a good song. </h4>
     <select class="form-control" id="q9">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -135,7 +146,7 @@
     </select>
 
     <h3>Question 10</h3>
-    <h4>You feel more energetic after spending time with a group of people.</h4>
+    <h4>Making friends is easier when you're going through something awful together (read: this assignment).</h4>
     <select class="form-control" id="q10">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -148,7 +159,7 @@
     <br>
     <br>
 
-    <!-- Submit Button -->
+  
     <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
      Submit</button>
 
@@ -189,15 +200,10 @@
     $("#submit").on("click", function(event) {
       event.preventDefault();
 
-      // Form validation
+      // check if all are filled
       function validateForm() {
         var validCheck = true;
-        $(".form-control").each(function() {
-          if ($(this).val() === "") {
-           var validCheck = false;
-          }
-        });
-
+        
         $(".form-control").each(function() {
 
           if ($(this).val() === "") {
@@ -207,9 +213,9 @@
         return validCheck;
       }
 
-      // If all required fields are filled
-      if (validateForm()) {
-        // Create an object for the user"s data
+      
+      if (validateForm()===true) {
+     
         var userData = {
           name: $("#name").val(),
           photo: $("#photo").val(),
@@ -227,14 +233,14 @@
           ]
         };
 
-        // AJAX post the data to the friends API.
+        
         $.post("/api/friends", userData, function(data) {
 
-          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          //res sent to post
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
 
-          // Show the modal with the best match
+          // best match
           $("#results-modal").modal("toggle");
 
         });

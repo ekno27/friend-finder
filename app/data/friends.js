@@ -17,19 +17,19 @@ var people = [
       ]
   },
   {
-    "name":"Ahmed",
+    "name":"Lucas",
     "photo":"http://pngimg.com/uploads/box/box_PNG60.png",
     "scores":[
         3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        4,
+        4,
+        4,
+        1,
+        5,
+        5,
+        2,
+        1
       ]
   }
 ]

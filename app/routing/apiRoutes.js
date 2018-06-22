@@ -13,9 +13,40 @@ module.exports= function(app){
     app.post("/api/friends",function(req,res){
         var userInput = req.body;
         console.log(userInput);
+        var userResults = userInput.scores;
+        var match;
+        var minIndex;
+      
+        var minTotalDifference = 100;
+        console.log(minTotalDifference);
+
+        for (var i = 0; i <people.length;i++){
+            var totalDifference = calculateDifference(userResults,people[i].scores);
+             if(totalDifference<minTotalDifference){
+                 minTotalDifference = totalDifference;
+                 console.log(minTotalDifference);
+                 minIndex=i;
+             }
+        }
+        var match = people[minIndex];
+        console.log(minIndex);
+      
+    
+
         people.push(userInput);
-        res.json(userInput);
+        res.json(match);
     });
     
+
+  
+    function calculateDifference(userScore, db_score){
+        var totalDifference =0;
+        for(var i = 0;i<db_score.length;i++){
+            totalDifference += Math.abs(userScore[i]-db_score[i]);
+           
+        }
+        
+        return totalDifference;
+    }
 }
 
