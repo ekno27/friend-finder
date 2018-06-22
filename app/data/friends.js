@@ -2,7 +2,7 @@
 var people = [
     {
     "name":"Ahmed",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "photo":"http://pngimg.com/uploads/box/box_PNG60.png",
     "scores":[
         5,
         1,
@@ -14,6 +14,22 @@ var people = [
         5,
         4,
         1
+      ]
+  },
+  {
+    "name":"Ahmed",
+    "photo":"http://pngimg.com/uploads/box/box_PNG60.png",
+    "scores":[
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
       ]
   }
 ]
